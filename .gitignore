@@ -134,3 +134,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# IDE related
+.idea
+
+# build output
+.vercel
+
+# OS-specific
+.DS_Store
+
+tmp
+
+benchmarking/compare/.results
