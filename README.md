@@ -1,2 +1,1 @@
-# okrun
-OK Run
+# OKrun
