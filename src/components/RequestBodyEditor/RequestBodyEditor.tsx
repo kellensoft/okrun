@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export interface RequestBodyEditorProps {
   value: string;
@@ -21,33 +22,33 @@ export const RequestBodyEditor: React.FC<RequestBodyEditorProps> = ({
   variables,
   onChange,
 }) => {
-  // Find all variables referenced in the body
   const usedVars = extractVars(value);
-  // Which are missing from defined variables
   const missingVars = Array.from(new Set(usedVars.filter(v => !variables.includes(v))));
-  // Which are defined but unused
-  const unusedVars = variables.filter(v => !usedVars.includes(v));
+  const unusedVars = Array.from(new Set(variables.filter(v => !usedVars.includes(v))));
+
+  const id = uuidv4();
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <label>
+      <label htmlFor={`request-body-${id}`} style={{ marginBottom: 4 }}>
         Request Body
+      </label>
         <textarea
+          id={`request-body-${id}`}
           value={value}
           onChange={e => onChange(e.target.value)}
           rows={8}
           style={{ fontFamily: "monospace", minWidth: 320, minHeight: 100 }}
           aria-label="Request Body"
         />
-      </label>
       <div style={{ marginTop: 6 }}>
-        {missingVars.length > 0 && (
+        {missingVars.filter(v => v !== "").length > 0 && (
           <div style={{ color: "red" }}>
             Missing variables:&nbsp;
             {missingVars.map(v => <code key={v} style={{ marginRight: 4 }}>{v}</code>)}
           </div>
         )}
-        {unusedVars.length > 0 && (
+        {unusedVars.filter(v => v !== "").length > 0 && (
           <div style={{ color: "#e69b00" }}>
             Unused variables:&nbsp;
             {unusedVars.map(v => <code key={v} style={{ marginRight: 4 }}>{v}</code>)}

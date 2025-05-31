@@ -11,7 +11,7 @@ export const Empty = () => {
   const [state, setState] = useState({ name: "", value: "", pattern: "" });
   return (
     <VariableRow
-        id={uuidv4()}
+      id={uuidv4()}
       key={0}
       {...state}
       onChange={variable => setState({ ...variable, pattern: variable.pattern ?? "" })}

@@ -18,6 +18,7 @@ export const Default = () => {
     outputRules: [{ id: uuidv4(), type: "jsonpath", pattern: "", name: "" }],
     headers: [{ id: uuidv4(), name: "", value: "" }]
   });
+
   return (
     <TabConfigForm value={state} onChange={setState} />
   );

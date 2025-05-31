@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderRow } from "../HeaderRow";
 import type { HeaderTableProps, Header } from "./HeaderTable.types";
-import { v4 as uudiv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export const HeaderTable: React.FC<HeaderTableProps> = ({
   headers,
@@ -25,7 +25,7 @@ export const HeaderTable: React.FC<HeaderTableProps> = ({
   };
 
   const handleAdd = () => {
-    onChange([...headers, {id: uudiv4(), name: "", value: "" }]);
+    onChange([...headers, {id: uuidv4(), name: "", value: "" }]);
   };
 
   const nameCounts = headers.reduce((acc, h) => {

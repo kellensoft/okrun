@@ -15,19 +15,25 @@ export const VariableRow: React.FC<VariableRowProps> = ({
   return (
     <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
       <input
+        id={`variable-name-${id}`}
+        type="text"
         aria-label={`Input Name ${idx + 1}`}
         value={name}
         onChange={e => onChange({id, name: e.target.value, value, pattern })}
         placeholder="Name"
-        style={{ borderColor: error ? "red" : undefined }}
+        style={{ borderColor: !name ? "red" : undefined }}
       />
       <input
+        id={`variable-value-${id}`}
+        type="text"
         aria-label={`Input Value ${idx + 1}`}
         value={value}
         onChange={e => onChange({id, name, value: e.target.value, pattern })}
         placeholder="Value"
       />
       <input
+        id={`variable-pattern-${id}`}
+        type="text"
         aria-label={`Input Pattern ${idx + 1}`}
         value={pattern ?? ""}
         onChange={e =>
@@ -36,6 +42,8 @@ export const VariableRow: React.FC<VariableRowProps> = ({
         placeholder="Pattern (optional)"
       />
       <button
+        id={`remove-variable-${id}`}
+        type="button"
         aria-label={`Remove input variable ${idx + 1}`}
         onClick={onRemove}
         disabled={disableRemove}

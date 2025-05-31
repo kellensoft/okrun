@@ -39,8 +39,6 @@ export const VariableTable: React.FC<VariableTableProps> = ({
   const isDuplicate = (name: string) =>
     !!name && nameCounts[name.trim().toLowerCase()] > 1;
 
-  console.log(variables.map(v => v.id));
-
   return (
     <div>
       {variables.length === 0 ? (
@@ -75,3 +73,5 @@ export const VariableTable: React.FC<VariableTableProps> = ({
     </div>
   );
 };
+
+export default VariableTable;
